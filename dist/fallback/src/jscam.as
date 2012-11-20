@@ -173,6 +173,10 @@ class JSCam {
 					ExternalInterface.call("webcam.onSave", row);
 				}
 
+			} else if ("jpeg_callback" == mode) {
+				var e = new JPGEncoder(quality);
+				ExternalInterface.call("webcam.onSave", e.encode(JSCam.buffer));
+				
 			} else if ("save" == mode) {
 
 				if (file) {
